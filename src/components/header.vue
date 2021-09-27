@@ -1,7 +1,8 @@
 <template>
   <header class="panel">
     <div class="logo">
-      <img :srcset="imgUrl" alt="华西玛法logo"/>
+      <!-- <img :srcset="imgUrl" alt="华西玛法logo"/> -->
+      <img src="@/assets/logo.jpg" alt="华西玛法logo"/>
     </div>
     <section>
       <Navbar />
@@ -20,15 +21,15 @@ export default {
   components: {
     Navbar
   },
-  data() {
-    return {
-      imgUrl:''
-    }
-  },
-  created() {
-    let urlTemp = 'assets/logo.jpg'
-    this.imgUrl = require('@/'+urlTemp)
-  }
+  // data() {
+  //   return {
+  //     imgUrl:''
+  //   }
+  // },
+  // created() {
+  //   let urlTemp = 'assets/logo.jpg'
+  //   this.imgUrl = require('@/'+urlTemp)
+  // }
 }
 </script>
 

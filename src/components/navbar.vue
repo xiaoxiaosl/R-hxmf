@@ -33,6 +33,7 @@ export default {
   flex: 1;
   margin-left: -15px;
   align-items: flex-start;
+  font-size: 16px;
 }
 .navbar li {
   margin-left: 15px;
@@ -44,9 +45,12 @@ export default {
   text-decoration: none;
   transition: .2s;
 }
+span:hover {
+  background-color: #1f70b8;
+  color: #fff;
+}
 .active {
   background-color: #1f70b8;
   color: #fff;
 }
-
 </style>
