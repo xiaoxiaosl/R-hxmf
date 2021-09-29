@@ -1,4 +1,4 @@
-# hxmf 华西玛法项目【大鹅吃葡萄大佬】
+# hxmf
 
 ## Project setup
 ```
