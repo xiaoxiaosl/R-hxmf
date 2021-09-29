@@ -1,29 +1,57 @@
 <template>
   <ul class="navbar panel">
-    <li>
-      <span class="active">首页</span>
-    </li>
-    <li>
-      <span>品牌探索</span>
-    </li>
-    <li>
-      <span>核心技术</span>
-    </li>
-    <li>
-      <span>产品介绍</span>
-    </li>
-    <li>
-      <span>联系我们</span>
-    </li>
-    <li>
-      <span>官网店铺</span>
+    <li v-for="(item ,index) in nav" :key="index">
+      <span 
+      @click="PageJump(item.path)"
+      :class="{'active' : activeIndex == item.path}">
+      {{item.title}}
+      </span>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name:'navbar'
+  name:'navbar',
+  data() {
+    return {
+      nav: [
+        {
+          title: '首页',
+          path: '/'
+        },{
+          title: '品牌探索',
+          path: '/brand'
+        },{
+          title: '核心技术',
+          path: '/technology',
+        }, {
+          title: '产品介绍',
+          path: '/product'
+        }, {
+          title: '联系我们',
+          path: '/contactUs'
+        }, {
+          title: '官方店铺',
+          path: 'https://phmmy.tmall.com/index.htm?spm=a1z10.3-b-s.w5002-22307990129.2.25fc2497aTCac5'
+        }
+      ]
+    }
+  },
+  methods: {
+    PageJump(link) {
+      if(link.indexOf('https') != '-1') {
+        window.location.href = link
+      }else {
+        this.$router.push(link)
+      }
+    }
+  },
+  computed: {
+    activeIndex() {
+      return this.$route.path
+    }
+  }
 }
 </script>
 
