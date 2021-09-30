@@ -24,6 +24,18 @@ export default {
         {
           imgUrl: require('@/static/banner1.jpg'),
           path: '/about' 
+        },
+        {
+          imgUrl: require('@/static/banner2.jpg'),
+          path: '/about' 
+        },
+        {
+          imgUrl: require('@/static/banner3.jpg'),
+          path: '/about' 
+        },
+        {
+          imgUrl: require('@/static/banner4.jpg'),
+          path: '/about' 
         }
       ]
     }
