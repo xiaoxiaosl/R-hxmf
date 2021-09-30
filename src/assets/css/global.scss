@@ -1,0 +1,146 @@
+$bgcolor: #1f70b8;
+$colorBlue: #007acd;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+#app {
+  font-family: Microsoft Yahei,"\9ED1\4F53",Avenir,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  font-size: 14px;
+}
+li {
+  list-style: none;
+}
+h3 {
+  margin: 15px 0 10px 0;
+  font-size: 16px;
+}
+h4 {
+  margin-bottom: 60px;
+  color: $colorBlue;
+  font-size: 22px;
+  font-weight: normal;
+}
+img {
+  vertical-align: middle;
+}
+.panel-layout {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-panel {
+  background: url('../../static/bg.png') top center no-repeat;
+}
+
+/* 通用标题 */
+.contact-panel_title {
+  font-size: 32px;
+  font-weight: 100;
+  margin-bottom: 85px;
+  margin-top: 65px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  &:before,
+  &:after {
+    content: "";
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 65px;
+  }
+  &::before {
+    background-color: #f2f1f0;
+    height: 1px;
+    margin-left: -210px;
+    width: 420px;
+  }
+  &:after {
+    background-color: #007acd;
+    height: 2px;
+    margin-left: -73px;
+    width: 146px;
+  }
+}
+
+/* 回到顶部 */
+.el-backtop {
+  right: 30px;
+  bottom: 280px;
+  width: 45px;
+  height: 45px;
+  background-color: #007acd;
+  border-radius: 100%;
+  &:hover {
+    @extend .el-backtop;
+  }
+  &:before {
+    background-color: rgba(0,102,105,.1);
+    border-radius: 100%;
+    content: "";
+    height: 61px;
+    left: -8px;
+    position: absolute;
+    top: -8px;
+    width: 61px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 11px;
+    margin-left: -5px;
+    margin-top: -2px;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    transform: rotate(-45deg);
+  }
+}
+.el-icon-caret-top {
+  opacity: 0;
+}
+// Tabs 切换
+.el-tabs__item {
+  padding: 0;
+  margin-top: 67px;
+  width: 155px;
+  height: 55px;
+  background-color: #f3f7fa;
+  font-size: 16px;
+  line-height: 55px;
+  text-decoration: none;
+}
+.el-tabs__item.is-active {
+  background-color: $bgcolor;
+  color: #fff;
+}
+.el-tabs__active-bar {
+  display: none;
+}
+.el-tabs__nav {
+  float: none;
+}
+.el-tabs__nav-wrap::after {
+  content: none;
+}
+// 走马灯
+.el-carousel__item img {
+  width: 100%;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}

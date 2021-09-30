@@ -1,9 +1,9 @@
 <template>
-  <header class="panel">
-    <div class="logo">
+  <div class="logo">
       <!-- <img :srcset="imgUrl" alt="华西玛法logo"/> -->
       <img src="@/assets/logo.jpg" alt="华西玛法logo"/>
     </div>
+  <header class="panel-layout">
     <section>
       <Navbar />
       <div class="search">
@@ -20,23 +20,14 @@ export default {
   name: "Header",
   components: {
     Navbar
-  },
-  // data() {
-  //   return {
-  //     imgUrl:''
-  //   }
-  // },
-  // created() {
-  //   let urlTemp = 'assets/logo.jpg'
-  //   this.imgUrl = require('@/'+urlTemp)
-  // }
+  }
 }
-</script>
+</script> 
 
 <style scoped>
 .logo {
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 22px;
+  padding-bottom: 22px;
   border-bottom: 1px solid #f0f0f0;
   text-align: center;
 }

@@ -1,20 +1,32 @@
 <template>
   <Header />
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <el-carousel indicator-position="outside">
+    <el-carousel-item v-for="(item, index) in bannerItem" :key="index">
+      <img :src="item.imgUrl">
+    </el-carousel-item>
+  </el-carousel>
   <Footer />
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
 import Header from '@/components/header.vue'
 import Footer from '@/components/footer.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
     Header,
     Footer,
+  },
+  data() {
+    return {
+      bannerItem: [
+        {
+          imgUrl: require('@/static/banner1.jpg'),
+          path: '/about' 
+        }
+      ]
+    }
   }
 }
 </script>

@@ -6,11 +6,12 @@
     </div>
     <div class="contact-panel">
       <div class="contact-panel_title">联系我们</div>
+      <h3 class=""></h3>
       <ul>
-        <li>
-          <img src="@/static/weibo.png" alt="微博">
-          <p>官方微博</p>
-          <p>@PhM华西珐玛</p>
+        <li v-for="(item, index) in contact" :key="index">
+          <img :src="item.imgUrl" :alt="item.title">
+          <p>{{item.title}}</p>
+          <p>{{item.describe}}</p>
         </li>
       </ul>
     </div>
@@ -28,13 +29,34 @@ import Footer from '@/components/footer.vue'
 
 export default {
   name: 'home',
+  data() {
+    return {
+      contact: [
+        {
+          title: '官方微博',
+          imgUrl: require('@/static/weibo.png'),
+          describe: '@PhM华西珐玛',
+        },
+        {
+          title: '官方微信',
+          imgUrl: require('@/static/weixin.png'),
+          describe: 'phm-cd525',
+        },
+        {
+          title: '客服电话',
+          imgUrl: require('@/static/telphone.png'),
+          describe: '028-65232887'
+        }
+      ]
+    }
+  },
   components: {
     Header,
     Footer,
   }
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .picture {
   text-align: center;
 
@@ -43,33 +65,25 @@ export default {
     vertical-align: middle;
   }
 }
-.contact-panel_title {
-  font-size: 32px;
-  font-weight: 100;
-  margin-bottom: 85px;
-  margin-top: 65px;
-  position: relative;
-  text-align: center;
-  white-space: nowrap;
-  &:before,
-  &:after {
-    content: "";
-    left: 50%;
-    overflow: hidden;
-    position: absolute;
-    top: 65px;
+.contact-panel {
+  background: url('../static/bg.png') top center no-repeat;
+  ul {
+    text-align: center;
+    li {
+      min-width: 177px;
+      display: inline-block;
+      margin-bottom: 65px;
+      margin-left: 47px;
+      margin-right: 47px;
+      padding: 30px 0;
+      border: 1px solid #1f70b8;
+    }
   }
-  &::before {
-    background-color: #f2f1f0;
-    height: 1px;
-    margin-left: -210px;
-    width: 420px;
-  }
-  &:after {
-    background-color: #007acd;
-    height: 2px;
-    margin-left: -73px;
-    width: 146px;
+  p {
+    padding: 0;
+    margin-bottom: 0;
+    font-size: 16px;
   }
 }
+
 </style>

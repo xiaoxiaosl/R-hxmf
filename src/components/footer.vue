@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="panel">
+    <div class="panel-layout">
       <div class="contact">
         <h3>消费者服务:</h3>
         <div class="contact-info">
@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 footer {
-  padding-top: 30px;
+  padding-top: 25px;
   padding-bottom: 40px;
   background: #f1f6f9;
 }
@@ -53,7 +53,7 @@ footer img {
   width: 150px;
   height: 150px;
 }
-footer .panel {
+footer .panel-layout {
   display: flex;
 }
 .contact-info {
@@ -114,7 +114,7 @@ footer .panel {
 .address {
   overflow: hidden;
   flex: 1;
-  margin-top: 18px;
+  margin-top: 25px;
 }
 .erweima {
   float: left;
@@ -125,6 +125,6 @@ footer .panel {
   margin-right: 35px;
 }
 .address p {
-  margin-top: 4px;
+  margin-top: 12px;
 }
 </style>
