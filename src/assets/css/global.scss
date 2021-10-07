@@ -135,7 +135,30 @@ img {
 // 走马灯
 .el-carousel__item img {
   width: 100%;
+  cursor: pointer;
 }
-.el-carousel__container {
-  height: 597px;
+.el-carousel__arrow,
+.el-carousel__arrow:hover {
+  background: none;
+}
+.el-icon-arrow-right,
+.el-icon-arrow-left {
+  width: 27px;
+  height: 44px;
+  text-indent: -999em;
+}
+.el-icon-arrow-right {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z' fill='%23007aff'/%3E%3C/svg%3E");
+}
+.el-icon-arrow-left {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z' fill='%23007aff'/%3E%3C/svg%3E");
+}
+.el-carousel__button {
+  width: 8px;
+  height: 8px;
+  background: rgba($color: #000000, $alpha: 0.2);
+  border-radius: 100%;
+}
+.el-carousel__indicator.is-active button {
+  background: #007aff;
 }

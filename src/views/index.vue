@@ -1,10 +1,22 @@
 <template>
   <Header />
-  <el-carousel indicator-position="outside">
-    <el-carousel-item v-for="(item, index) in bannerItem" :key="index">
-      <img :src="item.imgUrl">
-    </el-carousel-item>
+  <el-carousel :height="bannerHeight +'px'"  arrow="always" :interval="500000">
+    <el-carousel-item v-for="(item, index) in bannerItem"  :key="index" pause-on-hover="true">
+      <img :src="item.imgUrl" @click="PageJump(item.path)">
+    </el-carousel-item> 
   </el-carousel>
+  <div class="product-details">
+    <h2 class="detail-title">{{productTxt}}</h2>
+    <div class="detail-layout">
+      <div class="detail-img"><img :src="detailImg" /></div>
+      <div class="detail-body">
+        <div v-for="(item, index) in details" :key="index">
+          <h5>{{item.title}}</h5>
+          <p v-html="item.content"></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <Footer />
 </template>
 
@@ -20,6 +32,21 @@ export default {
   },
   data() {
     return {
+      bannerHeight: '',
+      screenHeight: '',
+      detailImg: require('@/static/1.jpg'),
+      details: [
+        {
+          title: '以桂花为本，专业修复肌肤问题',
+          content: '10年桂花系统研究,至简配方模式<br/>为更多人特别是婴幼儿、孕妈妈等特殊群体<br/>带来天然更有效的肌肤修护体验'
+        },
+        {
+          title: '专利止痒修护成分：桂花Osthin™',
+          content: '源自新鲜天然桂花萃取，能有效舒缓、呵护脆弱肌肤，<br/> 提升肌肤自愈力。<br/> 每1000g新鲜桂花仅能萃取0.02g Osthin™<br />  仅需一点，即刻修护'
+          
+        }
+      ],
+      productTxt: '以桂花为本，专业修复肌肤问题',
       bannerItem: [
         {
           imgUrl: require('@/static/banner1.jpg'),
@@ -39,35 +66,97 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    this.screenWidth = window.innerWidth;
+    this.setSize();
+    window.onresize = ()=> {
+      this.screenWidth = window.innerWidth;
+      this.setSize();
+    }
+  },
+  methods: {
+    setSize() {
+      this.bannerHeight = 575 / 1841 * this.screenWidth
+    },
+    PageJump(link) {
+       if(link.indexOf('https') != '-1') {
+        window.location.href = link
+      }else {
+        this.$router.push(link)
+      }
+    }
   }
 }
 </script>
 
-<style>
-* {
-  box-sizing: border-box;
+<style lang="scss">
+.product-details {
+  overflow: hidden;
+  background-color: #f1f6f9;
+  margin-top: 140px;
+  padding-top: 80px;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  font-size: 14px;
+.detail-title {
+  font-size: 36px;
+  font-weight: 100;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  
+  &:after {
+    background-color: #007acd;
+    content: "";
+    height: 2px;
+    left: 50%;
+    margin-left: -50px;
+    overflow: hidden;
+    position: absolute;
+    top: 65px;
+    width: 100px;
+  }
 }
-ul {
-  padding: 0;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
-.panel {
+.detail-layout {
+  position: relative;
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #fff;
+  height: 606px;
+  margin-top: 72px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+  }
+
 }
-h3 {
-  margin: 10px 0 10px 0;
-  font-size: 14px;
+.detail-img {
+  position: absolute;
+  left: -308px; 
+}
+.detail-body {
+  float: right;
+  margin-right: 80px;
+
+  h5 {
+    color: #1e6fb9;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 65px;
+    margin-bottom: 18px;
+  }
+
+  p {
+    line-height: 1.9;
+    font-size: 16px;
+  }
 }
 </style>
