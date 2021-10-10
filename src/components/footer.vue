@@ -6,11 +6,11 @@
         <div class="contact-info">
           <a>防伪查询
             <div class="qrcode">
-              <img src="@/static/fwcx.png" alt="防伪查询"><br/>请使用微信扫一扫
+              <img :src="service.fwcx" alt="防伪查询"><br/>请使用微信扫一扫
             </div>
           </a>|
           <a>售后服务
-             <div class="qrcode sh">028-65232887(工作日9:00-18:00)</div>  
+             <div class="qrcode sh" v-html="service.telphone"></div>  
           </a>
         </div>
         <h3>代理商服务:</h3>
@@ -19,14 +19,14 @@
         <div class="contact-info">
           <a class="icon-weidian">官方微店
             <div class="qrcode">
-              <img src="@/static/gfwd.png" alt="官方微店"><br/>请使用微信扫一扫
+              <img :src="service.gfwd" alt="官方微店"><br/>请使用微信扫一扫
             </div>
           </a>|
           <a href="" class="icon-taobao">官网店铺</a>
         </div>
       </div>
       <div class="address">
-        <div class="erweima"><img src="@/static/address-qr.png"></div>
+        <div class="erweima"><img :src="service.qrcode"></div>
         <p>官方微博：@PhM华西珐玛</p>
         <p>官方微信：phm-cd525</p>
         <p>客服电话：028-65232887</p>
@@ -39,7 +39,16 @@
 
 <script>
 export default {
- name: 'Footer'
+ data() {
+   return {
+     service: {
+       fwcx: require('@/static/fwcx.png'),
+       telphone: '028-65232887(工作日9:00-18:00)',
+       gfwd: require('@/static/gfwd.png'),
+       qrcode: require('@/static/address-qr.png')
+     }
+   }
+ }
 }
 </script>
 
