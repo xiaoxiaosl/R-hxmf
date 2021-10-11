@@ -97,6 +97,7 @@ export default {
       this.screenWidth = window.innerWidth;
       this.setSize();
     };
+    console.log(this.$route.params.id)
   },
   methods: {
     setSize() {

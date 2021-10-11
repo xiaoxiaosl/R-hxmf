@@ -29,19 +29,9 @@ const routes = [{
     component: () => import('@/views/technology.vue')
   },
   {
-    name: 'brand/one',
-    path: '/brandone',
-    component: () => import('@/views/brandone.vue'),
-  },
-  {
-    name: 'brand/two',
-    path: '/brandtwo',
-    component: () => import('@/views/brandtwo.vue')
-  },
-  {
-    name: 'brand/three',
-    path: '/brandthree',
-    component: () => import('@/views/brandthree.vue')
+    name: 'brand',
+    path: '/brand/:id',
+    component: () => import('@/views/brand.vue'),
   }
 ]
 

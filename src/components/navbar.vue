@@ -13,7 +13,7 @@
       <el-collapse-transition>
         <div class="brand-subnav" v-show="isShow" v-if="item.title == '品牌探索'">
           <div class="panel-layout">
-            <span v-for="(item, index) in item.subNavbar" :key="index" @click="PageJump(item.path)">
+            <span v-for="(item, index) in item.subNavbar" :key="index" @click="insurance(item.id)">
               {{item.title}}
             </span>
           </div>
@@ -35,18 +35,19 @@ export default {
           path: 'home'
         },{
           title: '品牌探索',
+          path: 'brand',
           subNavbar: [
             {
               title: '创始故事',
-              path: 'brand/one'
+              id: 'one'
             },
             {
               title: '品牌理念',
-              path: 'brand/two'
+              id: 'two'
             },
             {
               title: '天然萃取',
-              path: 'brand/three'
+              id: 'three'
             }
           ]
           
@@ -73,6 +74,15 @@ export default {
       }else {
         this.$router.push({name: link})
       }
+    },
+    insurance(id) {
+      this.$router.push({
+          path: `/brand`,
+          query: {
+            id: 'one',
+            name: id
+          }
+      })
     },
     handleSubnav() {
       this.isShow = !this.isShow
