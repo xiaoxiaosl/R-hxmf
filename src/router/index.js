@@ -11,7 +11,11 @@ const routes = [
   },
   {
     path: '/product',
-    component: () => import('@/views/product.vue')
+    component: () => import('@/views/product.vue'),
+    children: {
+      path: 'product-detail',
+      component: () => import('@/views/product-detail.vue')
+    }
   },
   {
     path: '/technology',
@@ -20,7 +24,7 @@ const routes = [
   {
     path: '/brand',
     component: () => import('@/views/brand.vue')
-  }
+  },
 ]
 
 const router = createRouter({

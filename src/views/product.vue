@@ -59,14 +59,14 @@ export default {
           label: '婴儿桂花',
           title: '婴儿桂花多效修护霜  50g',
           detail: '专为湿痒肌肤设计,高效补水保湿',
-          path: "/contactUs",
+          path: "/product-detail",
         },
         {
           imgUrl: require("@/static/2.jpg"),
           label: '婴儿桂花',
           title: '婴儿桂花多效修护霜  50g',
           detail: '专为湿痒肌肤设计,高效补水保湿',
-          path: "/contactUs",
+          path: "/product-detail",
         },
         {
           imgUrl: require("@/static/3.jpg"),
@@ -107,7 +107,7 @@ export default {
             label: '婴儿桂花',
             title: '婴儿桂花多效修护霜  50g',
             detail: '专为湿痒肌肤设计,高效补水保湿',
-            path: "/contactUs",
+            path: "/product-detail",
           }
         ]
         this.setSwiperStyle()
@@ -118,35 +118,35 @@ export default {
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              path: "/contactUs",
+              path: "/product-detail",
             },
             {
               imgUrl: require("@/static/2.jpg"),
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              path: "/contactUs",
+              path: "/product-detail",
             },
             {
               imgUrl: require("@/static/3.jpg"),
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              path: "/contactUs",
+              path: "/product-detail",
             },
             {
               imgUrl: require("@/static/4.jpg"),
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              path: "/contactUs",
+              path: "/product-detail",
             },
             {
             imgUrl: require("@/static/4.jpg"),
             label: '婴儿桂花',
             title: '婴儿桂花多效修护霜  50g',
             detail: '专为湿痒肌肤设计,高效补水保湿',
-            path: "/contactUs",
+            path: "/product-detail",
           }
         ]
         this.setSwiperStyle()
