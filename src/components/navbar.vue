@@ -2,23 +2,23 @@
   <ul class="navbar">
     <li v-for="(item ,index) in nav" :key="index">
       <span v-if="item.title == '品牌探索'"
-      :class="{'active' : activeIndex == item.path}" @click="handleSubnav">
+      :class="{'active' : activeIndex == true}" @click="handleSubnav">
       {{item.title}}
       </span>
       <span v-else
         @click="PageJump(item.path)"
-        :class="{'active' : activeIndex == item.path}">
+        :class="{'active' : activeIndex == '/' + item.path}">
         {{item.title}}
       </span>
-      <transition name="el-zoom-in-top">
+      <el-collapse-transition>
         <div class="brand-subnav" v-show="isShow" v-if="item.title == '品牌探索'">
           <div class="panel-layout">
-            <span v-for="(item, index) in item.subNavbar" :key="index" @click="PageJump(item.path)">
+            <span v-for="(item, index) in item.subNavbar" :key="index" @click="insurance(item.id)">
               {{item.title}}
             </span>
           </div>
         </div>
-      </transition>
+      </el-collapse-transition>
     </li>
   </ul>
 </template>
@@ -32,33 +32,34 @@ export default {
       nav: [
         {
           title: '首页',
-          path: '/'
+          path: 'home'
         },{
           title: '品牌探索',
+          path: 'brand',
           subNavbar: [
             {
               title: '创始故事',
-              path: '/brand'
+              id: 'one'
             },
             {
               title: '品牌理念',
-              path: '/brand1'
+              id: 'two'
             },
             {
               title: '天然萃取',
-              path: '/brand'
+              id: 'three'
             }
           ]
           
         },{
           title: '核心技术',
-          path: '/technology',
+          path: 'technology',
         }, {
           title: '产品介绍',
-          path: '/product'
+          path: 'product'
         }, {
           title: '联系我们',
-          path: '/contactUs'
+          path: 'contactUs'
         }, {
           title: '官方店铺',
           path: 'https://phmmy.tmall.com/index.htm?spm=a1z10.3-b-s.w5002-22307990129.2.25fc2497aTCac5'
@@ -71,16 +72,29 @@ export default {
       if(link.indexOf('https') != '-1') {
         window.location.href = link
       }else {
-        this.$router.push(link)
+        this.$router.push({name: link})
       }
+    },
+    insurance(id) {
+      this.$router.push({
+          path: `/brand`,
+          query: {
+            id: 'one',
+            name: id
+          }
+      })
     },
     handleSubnav() {
       this.isShow = !this.isShow
     }
   },
   computed: {
-    activeIndex() {
-      return this.$route.path
+    activeIndex() { 
+      let pathName = this.$route.path
+      if (pathName.indexOf('brand') == 1) {
+        pathName = true
+      }
+      return pathName
     }
   }
 }
