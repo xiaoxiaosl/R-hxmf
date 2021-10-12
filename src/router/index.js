@@ -30,7 +30,7 @@ const routes = [{
   },
   {
     name: 'brand',
-    path: '/brand/:id',
+    path: '/brand/',
     component: () => import('@/views/brand.vue'),
   }
 ]

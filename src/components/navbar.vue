@@ -39,15 +39,15 @@ export default {
           subNavbar: [
             {
               title: '创始故事',
-              id: 'one'
+              id: '0'
             },
             {
               title: '品牌理念',
-              id: 'two'
+              id: '1'
             },
             {
               title: '天然萃取',
-              id: 'three'
+              id: '2'
             }
           ]
           
@@ -78,10 +78,7 @@ export default {
     insurance(id) {
       this.$router.push({
           path: `/brand`,
-          query: {
-            id: 'one',
-            name: id
-          }
+          query: {id}
       })
     },
     handleSubnav() {

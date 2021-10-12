@@ -162,9 +162,5 @@ export default {
 <style scoped lang="scss">
 .product {
   text-align: center;
-
-  img {
-    width: 100%;
-  }
 }
 </style>
