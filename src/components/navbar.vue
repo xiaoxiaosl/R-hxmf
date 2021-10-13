@@ -73,6 +73,7 @@ export default {
         window.location.href = link
       }else {
         this.$router.push({name: link})
+        this.isShow = false
       }
     },
     insurance(id) {
