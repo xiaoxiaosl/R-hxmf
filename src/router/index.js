@@ -34,7 +34,7 @@ const routes = [{
   },
   {
     name: 'brand',
-    path: '/brand',
+    path: '/brand/',
     component: () => import('@/views/brand.vue'),
   }
 ]
