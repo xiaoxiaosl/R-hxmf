@@ -107,7 +107,6 @@ export default {
   data() {
     return {
       activeName: '1',
-      styleHide: '',
       bannerImg: {
         imgUrl: require('@/static/banner8.png'),
         label: '产品介绍'
