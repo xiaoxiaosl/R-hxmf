@@ -2,7 +2,7 @@
   <ul class="navbar">
     <li v-for="(item ,index) in nav" :key="index">
       <span v-if="item.title == '品牌探索'"
-      :class="{'active' : activeIndex == true}" @click="handleSubnav">
+      :class="{'active' : activeIndex == '/' + item.path}" @click="handleSubnav">
       {{item.title}}
       </span>
       <span v-else
@@ -80,6 +80,7 @@ export default {
           path: `/brand`,
           query: {id}
       })
+      this.isShow = !this.isShow
     },
     handleSubnav() {
       this.isShow = !this.isShow
@@ -87,11 +88,7 @@ export default {
   },
   computed: {
     activeIndex() { 
-      let pathName = this.$route.path
-      if (pathName.indexOf('brand') == 1) {
-        pathName = true
-      }
-      return pathName
+      return this.$route.path
     }
   }
 }

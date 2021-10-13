@@ -180,18 +180,8 @@ export default {
     }  
   },
   mounted() {
-<<<<<<< HEAD
-    this.screenWidth = window.innerWidth;
-    this.setSize();
-    window.onresize = () => {
-      this.screenWidth = window.innerWidth;
-      this.setSize();
-    };
-    console.log(this.$route.query)
-=======
     let id = this.$route.query
     this.brandData = brandData[id.id]
->>>>>>> 9cb4c21ed9e49e19a1d1fed3b3fed73325f043e1
   },
   methods: {
     PageJump(link) {

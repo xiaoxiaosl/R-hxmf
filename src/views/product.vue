@@ -5,17 +5,17 @@
       <img :src="bannerImg.imgUrl" alt="bannerImg.label">
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane v-for="(item, index) in tabs" 
-    :key="index" 
-    :label="item.label"
-    :name="item.tabIndex">
-      <div class="contact-panel">
-        <div class="contact-panel_title">{{item.label}}</div>
-        <h4>{{item.describe}}</h4>
-        <productList :product-list="productList" :styleHide="styleHide"/>
-      </div>
-    </el-tab-pane>
-  </el-tabs>
+      <el-tab-pane v-for="(item, index) in tabs" 
+      :key="index" 
+      :label="item.label"
+      :name="item.tabIndex">
+        <div class="contact-panel">
+          <div class="contact-panel_title">{{item.label}}</div>
+          <h4>{{item.describe}}</h4>
+          <productList :product-list="productList" :styleHide="styleHide"/>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
   </div>
   <Footer />
 </template>
@@ -36,7 +36,6 @@ export default {
     return {
       activeName: '1',
       styleHide: '',
-      getSlidePerViews: '',
       bannerImg: {
         imgUrl: require('@/static/product.png'),
         label: '产品介绍'
@@ -91,14 +90,12 @@ export default {
         this.styleHide = {
           'display': 'none'
         }
-        console.log(this.styleHide)
       } else {
         this.styleHide = {
           'display': 'block'
         }
       }
     },
-    
     handleClick(tab) {
       if (tab.paneName == 2) {
         this.productList = [  
