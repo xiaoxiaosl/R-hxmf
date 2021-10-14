@@ -2,12 +2,12 @@
   <ul class="navbar">
     <li v-for="(item ,index) in nav" :key="index">
       <span v-if="item.title == '品牌探索'"
-      :class="{'active' : activeIndex == '/' + item.path}" @click="handleSubnav">
+      :class="{'active' : activeIndex == item.path}" @click="handleSubnav">
       {{item.title}}
       </span>
       <span v-else
         @click="PageJump(item.path)"
-        :class="{'active' : activeIndex == '/' + item.path}">
+        :class="{'active' : activeIndex == item.path}">
         {{item.title}}
       </span>
       <el-collapse-transition>
@@ -32,10 +32,10 @@ export default {
       nav: [
         {
           title: '首页',
-          path: 'home'
+          path: '/'
         },{
           title: '品牌探索',
-          path: 'brand',
+          path: '/brand',
           subNavbar: [
             {
               title: '创始故事',
@@ -53,13 +53,13 @@ export default {
           
         },{
           title: '核心技术',
-          path: 'technology',
+          path: '/technology',
         }, {
           title: '产品介绍',
-          path: 'product'
+          path: '/product'
         }, {
           title: '联系我们',
-          path: 'contactUs'
+          path: '/contactUs'
         }, {
           title: '官方店铺',
           path: 'https://phmmy.tmall.com/index.htm?spm=a1z10.3-b-s.w5002-22307990129.2.25fc2497aTCac5'
@@ -72,7 +72,7 @@ export default {
       if(link.indexOf('https') != '-1') {
         window.location.href = link
       }else {
-        this.$router.push({name: link})
+        this.$router.push(link)
         this.isShow = false
       }
     },

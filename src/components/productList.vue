@@ -9,7 +9,7 @@
         :observeParents="true"
         :isHide='false'
       >
-        <swiper-slide v-for="(item, index) in productList" :key="index" @click="PageJump(item.path)">
+        <swiper-slide v-for="(item, index) in productData" :key="index" @click="PageJump(item.id)">
           <img :src="item.imgUrl" :alt="item.label" />
           <h5>{{ item.title }}</h5>
           <p>{{ item.detail }}</p>
@@ -30,7 +30,7 @@ import "swiper/components/navigation/navigation.min.css";
 
 SwiperCore.use([Navigation]);
 export default {
-  props: ["productList", 'styleHide'],
+  props: ["productData", 'styleHide'],
   components: {
     Swiper,
     SwiperSlide,
@@ -47,11 +47,14 @@ export default {
     };
   },
   methods: {
-    PageJump(link) {
-      if (link.indexOf("https") != "-1") {
-        window.location.href = link;
+    PageJump(id) {
+      if (id.indexOf("https") != "-1") {
+        window.location.href = id;
       } else {
-        this.$router.push(link);
+        this.$router.push({
+            name: `product-detail`,
+            params: {id}
+        })
       }
     },
   },

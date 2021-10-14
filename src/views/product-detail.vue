@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div class="product-detail panel-layout">
-    <div class="crumbs">产品介绍<font>婴儿桂花多效修护霜</font></div>
+    <div class="crumbs">产品介绍<em>婴儿桂花多效修护霜</em></div>
   </div>
   <Footer />
 </template>
@@ -13,6 +13,10 @@ export default {
   components: {
     Header,
     Footer,
+  },
+  mounted() {
+    let id = this.$route.query
+    console.log(id)
   }
 }
 </script>
@@ -20,8 +24,9 @@ export default {
 <style lang="scss" scoped>
 .crumbs {
 
-  font {
+  em {
     color: #1f70b8;
+    font-style: normal;
     &:after {
       border-bottom: 4px solid transparent;
       border-left: 6px solid #a5a5a5;
