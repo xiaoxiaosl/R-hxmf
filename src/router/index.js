@@ -1,10 +1,10 @@
 import {
   createRouter,
-  createWebHistory
+  createWebHashHistory
 } from 'vue-router'
 
 const routes = [{
-    path: '/',
+    path: '/home',
     component: () => import('@/views/index.vue'),
   },
   {
@@ -24,14 +24,21 @@ const routes = [{
     component: () => import('@/views/brand.vue'),
   },
   {
-    name: 'product-detail',
     path: '/product-detail',
     component: () => import('@/views/product-detail.vue')
   },
+  {
+    path: '/news',
+    component: () => import('@/views/news.vue')
+  },
+  {
+    path: '/news-detail',
+    component: () => import('@/views/news-detail.vue')
+  }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 

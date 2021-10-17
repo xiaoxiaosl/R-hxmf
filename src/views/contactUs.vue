@@ -1,25 +1,21 @@
 <template>
   <Header />
-  <div class="about">
-    <div class="picture">
-      <img src="@/static/about-banner.png" alt="联系我们">
-    </div>
-    <div class="contact-panel">
-      <div class="contact-panel_title">联系我们</div>
-      <h3 class=""></h3>
-      <ul>
-        <li v-for="(item, index) in contact" :key="index">
-          <img :src="item.imgUrl" :alt="item.title">
-          <p>{{item.title}}</p>
-          <p>{{item.describe}}</p>
-        </li>
-      </ul>
-    </div>
-    <div class="picture">
-      <img src="@/static/about-map.png" alt="联系我们">
-    </div>
+  <div class="picture">
+    <img src="@/static/about-banner.png" alt="联系我们">
   </div>
-  <div class=""></div>
+  <div class="contact-panel">
+    <div class="contact-panel_title">联系我们</div>
+    <ul>
+      <li v-for="(item, index) in contact" :key="index">
+        <img :src="item.imgUrl" :alt="item.title">
+        <p>{{item.title}}</p>
+        <p>{{item.describe}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="picture">
+    <img src="@/static/about-map.png" alt="联系我们">
+  </div>
   <Footer />
 </template>
 
@@ -65,25 +61,23 @@ export default {
     vertical-align: middle;
   }
 }
-.contact-panel {
-  background: url('../static/bg.png') top center no-repeat;
-  ul {
-    text-align: center;
-    li {
-      min-width: 177px;
-      display: inline-block;
-      margin-bottom: 65px;
-      margin-left: 47px;
-      margin-right: 47px;
-      padding: 30px 0;
-      border: 1px solid #1f70b8;
-    }
+
+ul {
+  text-align: center;
+  li {
+    min-width: 177px;
+    display: inline-block;
+    margin-bottom: 65px;
+    margin-left: 47px;
+    margin-right: 47px;
+    padding: 30px 0;
+    border: 1px solid #1f70b8;
   }
-  p {
-    padding: 0;
-    margin-bottom: 0;
-    font-size: 16px;
-  }
+}
+p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 16px;
 }
 
 </style>

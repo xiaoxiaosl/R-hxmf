@@ -1,5 +1,5 @@
 <template>
-  <ul class="navbar">
+  <ul class="navbar" ref="refNav">
     <li v-for="(item ,index) in nav" :key="index">
       <span v-if="item.title == '品牌探索'"
       :class="{'active' : activeIndex == item.path}" @click="handleSubnav">
@@ -58,6 +58,9 @@ export default {
           title: '产品介绍',
           path: '/product'
         }, {
+          title: '新闻资讯',
+          path: '/news'
+        }, {
           title: '联系我们',
           path: '/contactUs'
         }, {
@@ -70,10 +73,10 @@ export default {
   methods: {
     PageJump(link) {
       if(link.indexOf('https') != '-1') {
-        window.location.href = link
+        window.location.href = link;
       }else {
-        this.$router.push(link)
-        this.isShow = false
+        this.$router.push(link);
+        this.isShow = false;
       }
     },
     insurance(id) {
@@ -81,16 +84,28 @@ export default {
           path: `/brand`,
           query: {id}
       })
-      this.isShow = !this.isShow
+      this.isShow = !this.isShow;
     },
     handleSubnav() {
-      this.isShow = !this.isShow
-    }
+      this.isShow = !this.isShow;
+    },
   },
   computed: {
     activeIndex() { 
-      return this.$route.path
+      return this.$route.path;
     }
+  },
+  mounted() {
+    let navliElment = this.$refs.refNav.children;
+    let path = this.$route.path
+    if (path == '/product-detail') {
+      navliElment[3].children[0].className = 'active'
+    } else if(path == '/news-detail') {
+      navliElment[4].children[0].className = 'active'
+    }
+    this.axios.get('http://192.168.0.114:8080/src/static/config.json').then((response) => {
+      console.log(response.data)
+    })
   }
 }
 </script>
@@ -104,8 +119,9 @@ export default {
   font-size: 16px;
 }
 .navbar li {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 .navbar li > span {
   display: block;

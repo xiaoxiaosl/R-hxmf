@@ -48,16 +48,12 @@ export default {
   },
   methods: {
     PageJump(id) {
-      if (id.indexOf("https") != "-1") {
-        window.location.href = id;
-      } else {
-        this.$router.push({
-            name: `product-detail`,
-            params: {id}
-        })
-      }
-    },
-  },
+      this.$router.push({
+          path: `/product-detail`,
+          query: {id}
+      })
+    }
+  }
 };
 </script>
 

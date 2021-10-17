@@ -3,17 +3,15 @@
   <div class="picture">
     <img :src="bannerImg.imgUrl" alt="bannerImg.label">
   </div>
-  <div class="technology">
+  <div class="contact-panel">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane v-for="(item, index) in tabs" 
       :key="index" 
       :label="item.label"
       :name="item.tabIndex">
-        <div class="contact-panel">
-          <div class="contact-panel_title">{{item.label}}</div>
-          <h4>{{item.describe}}</h4>
-          <div class="technology-detail" v-html="brandData.html"></div>
-        </div>
+        <div class="contact-panel_title">{{item.label}}</div>
+        <h4>{{item.describe}}</h4>
+        <div class="technology-detail" v-html="brandData.html"></div>
       </el-tab-pane>
     </el-tabs>
   </div>

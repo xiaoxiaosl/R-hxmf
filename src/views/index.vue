@@ -10,7 +10,7 @@
     </el-carousel-item>
   </el-carousel>
   <div class="product-title">产品展示<small>PRODUCT DISPLAY</small></div>
-  <Product :product-data="productData"/>
+  <Product :product-data="productData" />
   <div class="product-details">
     <h2 class="detail-title">{{ productTxt }}</h2>
     <div class="detail-layout">
@@ -29,14 +29,14 @@
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import Product from '@/components/productList';
+import Product from "@/components/productList";
 
 export default {
   name: "home",
   components: {
     Header,
     Footer,
-    Product
+    Product,
   },
   data() {
     return {
@@ -77,40 +77,40 @@ export default {
       productData: [
         {
           imgUrl: require("@/static/2.jpg"),
-          label: '婴儿桂花',
-          title: '婴儿桂花多效修护霜  50g',
-          detail: '专为湿痒肌肤设计,高效补水保湿',
-          id: '1',
+          label: "婴儿桂花",
+          title: "婴儿桂花多效修护霜  50g",
+          detail: "专为湿痒肌肤设计,高效补水保湿",
+          id: "1",
         },
         {
           imgUrl: require("@/static/3.jpg"),
-          label: '婴儿桂花',
-          title: '婴儿桂花多效修护霜  50g',
-          detail: '专为湿痒肌肤设计,高效补水保湿',
-          id: '2',
+          label: "婴儿桂花",
+          title: "婴儿桂花多效修护霜  50g",
+          detail: "专为湿痒肌肤设计,高效补水保湿",
+          id: "2",
         },
         {
           imgUrl: require("@/static/3.jpg"),
-          label: '婴儿桂花',
-          title: '婴儿桂花多效修护霜  50g',
-          detail: '专为湿痒肌肤设计,高效补水保湿',
-          id: '3',
+          label: "婴儿桂花",
+          title: "婴儿桂花多效修护霜  50g",
+          detail: "专为湿痒肌肤设计,高效补水保湿",
+          id: "3",
         },
         {
           imgUrl: require("@/static/4.jpg"),
-          label: '婴儿桂花',
-          title: '婴儿桂花多效修护霜  50g',
-          detail: '专为湿痒肌肤设计,高效补水保湿',
-          id: '4',
+          label: "婴儿桂花",
+          title: "婴儿桂花多效修护霜  50g",
+          detail: "专为湿痒肌肤设计,高效补水保湿",
+          id: "4",
         },
         {
           imgUrl: require("@/static/5.jpg"),
-          label: '婴儿桂花',
-          title: '婴儿桂花多效修护霜  50g',
-          detail: '专为湿痒肌肤设计,高效补水保湿',
-          id: '5',
-        }
-      ]
+          label: "婴儿桂花",
+          title: "婴儿桂花多效修护霜  50g",
+          detail: "专为湿痒肌肤设计,高效补水保湿",
+          id: "5",
+        },
+      ],
     };
   },
   mounted() {
@@ -205,30 +205,30 @@ export default {
   }
 }
 .product-title {
-    color: #333;
-    font-size: 36px;
-    font-weight: 100;
-    margin-bottom: 110px;
-    margin-top: 100px;
-    text-align: center;
+  color: #333;
+  font-size: 36px;
+  font-weight: 100;
+  margin-bottom: 110px;
+  margin-top: 100px;
+  text-align: center;
 }
 .product-title small {
-    color: #939393;
-    display: block;
-    font-weight: 100;
-    margin-top: 15px;
-    position: relative;
+  color: #939393;
+  display: block;
+  font-weight: 100;
+  margin-top: 15px;
+  position: relative;
 
-    &::after {
-      content: "";
-      overflow: hidden;
-      position: absolute;
-      top: 50px;
-      left: 50%;
-      width: 100px;
-      height: 2px;
-      margin-left: -50px;
-      background-color: #007acd;
-    }
+  &::after {
+    content: "";
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    margin-left: -50px;
+    background-color: #007acd;
+  }
 }
 </style>

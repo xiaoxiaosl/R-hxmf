@@ -1,23 +1,20 @@
 <template>
   <Header />
-  <div class="product">
-    <div class="picture">
-      <img :src="bannerImg.imgUrl" alt="bannerImg.label">
-    </div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane v-for="(item, index) in tabs" 
-      :key="index" 
-      :label="item.label"
-      :name="item.tabIndex">
-        <div class="contact-panel">
-          <div class="contact-panel_title">{{item.label}}</div>
-          <h4>{{item.describe}}</h4>
-          <productList :product-data="productData" :styleHide="styleHide"/>
-        </div>
-      </el-tab-pane>
-    </el-tabs>
+  <div class="picture">
+    <img :src="bannerImg.imgUrl" alt="bannerImg.label">
   </div>
-  
+  <div class="contact-panel">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane v-for="(item, index) in tabs" 
+    :key="index" 
+    :label="item.label"
+    :name="item.tabIndex">
+      <div class="contact-panel_title">{{item.label}}</div>
+      <h4>{{item.describe}}</h4>
+      <productList :product-data="productData" :styleHide="styleHide"/>
+    </el-tab-pane>
+  </el-tabs>
+  </div>
   <Footer />
 </template>
 
@@ -32,14 +29,14 @@ const productData = [
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              id: '1',
+              id: '0',
             },
             {
               imgUrl: require("@/static/2.jpg"),
               label: '婴儿桂花',
               title: '婴儿桂花多效修护霜  50g',
               detail: '专为湿痒肌肤设计,高效补水保湿',
-              id: '1',
+              id: '0',
             },
             {
               imgUrl: require("@/static/3.jpg"),
@@ -63,6 +60,7 @@ const productData = [
             id: 1,
           }
         ]
+// 传参后的模拟数据
 const productData2 = [  
           {
             imgUrl: require("@/static/5.jpg"),
