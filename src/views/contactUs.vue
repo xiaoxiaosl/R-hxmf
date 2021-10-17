@@ -61,7 +61,6 @@ export default {
     vertical-align: middle;
   }
 }
-
 ul {
   text-align: center;
   li {
@@ -79,5 +78,4 @@ p {
   margin-bottom: 0;
   font-size: 16px;
 }
-
 </style>

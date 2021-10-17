@@ -28,6 +28,7 @@ export default {
   name:'navbar',
   data() {
     return {
+
       isShow: false,
       nav: [
         {
@@ -103,7 +104,7 @@ export default {
     } else if(path == '/news-detail') {
       navliElment[4].children[0].className = 'active'
     }
-    this.axios.get('http://192.168.0.114:8080/src/static/config.json').then((response) => {
+    this.axios.get('./data/config.json').then((response) => {
       console.log(response.data)
     })
   }
