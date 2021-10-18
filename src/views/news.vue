@@ -7,7 +7,11 @@
     <div class="contact-panel_title">新闻资讯</div>
     <div class="panel-layout">
       <ul class="news-panel">
-        <li v-for="(item, index) in newData" :key="index" @click="PageJump(item.id)">
+        <li
+          v-for="(item, index) in newData"
+          :key="index"
+          @click="PageJump(item.id)"
+        >
           <div class="time">
             <span class="day">{{ item.day }}</span>
             {{ item.time }}
@@ -24,7 +28,8 @@
       <el-pagination
         background
         layout="prev, pager, next"
-        :total="1000"
+        :total="totalNum"
+        @current-change="handleCurrentChange"
       ></el-pagination>
     </div>
   </div>
@@ -34,6 +39,7 @@
 <script>
 import Header from "@/components/header.vue";
 import Footer from "@/components/footer.vue";
+import { $httpNavbar } from "@/api/index.js";
 const newData = [
   {
     id: 0,
@@ -108,6 +114,7 @@ const newData = [
       "长津湖的气温骤降，穿着单薄衣衫的志愿军战士们，在极寒风雪中被冻成冰雕，用生命谱写了惊天地泣鬼神的雄壮史诗。抗美援朝战争中，涌现出30多万名英雄功臣和近6000个功臣群体。《奇迹 有密码》系列水墨动画为你讲述“最可爱的人”。",
   },
 ];
+console.log(newData)
 export default {
   name: "home",
   components: {
@@ -117,6 +124,9 @@ export default {
   data() {
     return {
       newData: "",
+      currentPage: 1,
+      pageSize: 10,
+      totalNum: 100
     };
   },
   methods: {
@@ -126,11 +136,18 @@ export default {
         query: { id },
       });
     },
+    handleCurrentChange(val) {
+        $httpNavbar({page: val}).then((response) => {
+          let resData = response.data;
+          this.newData = resData.newData2
+          this.totalNum = resData.total
+      })
+    }
   },
   mounted() {
-    this.newData = newData;
-  },
-};
+    this.handleCurrentChange()
+  }
+}
 </script>
 <style scoped lang="scss">
 .news {

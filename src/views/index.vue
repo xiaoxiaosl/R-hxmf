@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <el-carousel :height="bannerHeight + 'px'" :interval="50000">
+  <el-carousel :height="bannerHeight + 'px'" :interval="5000">
     <el-carousel-item
       v-for="(item, index) in bannerItem"
       :key="index"
@@ -23,13 +23,14 @@
       </div>
     </div>
   </div>
-  <Footer />
+  <Footer :service-data="serviceData"/>
 </template>
 
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Product from "@/components/productList";
+import { $httpNavbar } from "@/api/index.js";
 
 export default {
   name: "home",
@@ -42,83 +43,17 @@ export default {
     return {
       bannerHeight: "",
       detailImg: require("@/static/1.jpg"),
-      details: [
-        {
-          title: "以桂花为本，专业修复肌肤问题",
-          content:
-            "10年桂花系统研究,至简配方模式<br/>为更多人特别是婴幼儿、孕妈妈等特殊群体<br/>带来天然更有效的肌肤修护体验",
-        },
-        {
-          title: "专利止痒修护成分：桂花Osthin™",
-          content:
-            "源自新鲜天然桂花萃取，能有效舒缓、呵护脆弱肌肤，<br/> 提升肌肤自愈力。<br/> 每1000g新鲜桂花仅能萃取0.02g Osthin™<br />  仅需一点，即刻修护",
-        },
-      ],
-      productTxt: "以桂花为本，专业修复肌肤问题",
+      details: "",
+      productTxt: "",
       bannerItem: [
         {
-          imgUrl: require("@/static/banner1.jpg"),
+          imgUrl: "./static/banner1.jpg",
           path: "/contactUs",
-        },
-        {
-          imgUrl: require("@/static/banner2.jpg"),
-          path: "/contactUs",
-        },
-        {
-          imgUrl: require("@/static/banner3.jpg"),
-          path: "/contactUs",
-        },
-        {
-          imgUrl: require("@/static/banner4.jpg"),
-          path: "/contactUs",
-        },
+        }
       ],
       // 产品展示
-      productData: [
-        {
-          imgUrl: require("@/static/2.jpg"),
-          label: "婴儿桂花",
-          title: "婴儿桂花多效修护霜  50g",
-          detail: "专为湿痒肌肤设计,高效补水保湿",
-          id: "1",
-        },
-        {
-          imgUrl: require("@/static/3.jpg"),
-          label: "婴儿桂花",
-          title: "婴儿桂花多效修护霜  50g",
-          detail: "专为湿痒肌肤设计,高效补水保湿",
-          id: "2",
-        },
-        {
-          imgUrl: require("@/static/3.jpg"),
-          label: "婴儿桂花",
-          title: "婴儿桂花多效修护霜  50g",
-          detail: "专为湿痒肌肤设计,高效补水保湿",
-          id: "3",
-        },
-        {
-          imgUrl: require("@/static/4.jpg"),
-          label: "婴儿桂花",
-          title: "婴儿桂花多效修护霜  50g",
-          detail: "专为湿痒肌肤设计,高效补水保湿",
-          id: "4",
-        },
-        {
-          imgUrl: require("@/static/5.jpg"),
-          label: "婴儿桂花",
-          title: "婴儿桂花多效修护霜  50g",
-          detail: "专为湿痒肌肤设计,高效补水保湿",
-          id: "5",
-        },
-      ],
-    };
-  },
-  mounted() {
-    this.screenWidth = window.innerWidth;
-    this.setSize();
-    window.onresize = () => {
-      this.screenWidth = window.innerWidth;
-      this.setSize();
+      productData: "",
+      serviceData: ""
     };
   },
   methods: {
@@ -132,6 +67,25 @@ export default {
         this.$router.push(link);
       }
     },
+    getHttpData() {
+      $httpNavbar().then((response) => {
+        let resData = response.data;
+        this.bannerItem = resData.bannerItem;
+        this.productData = resData.productData;
+        this.productTxt = resData.productTxt;
+        this.details = resData.details;
+        this.serviceData = resData.serviceData;
+      });
+    },
+  },
+  mounted() {
+    this.getHttpData();
+    this.screenWidth = window.innerWidth;
+    this.setSize();
+    window.onresize = () => {
+      this.screenWidth = window.innerWidth;
+      this.setSize();
+    };
   },
 };
 </script>

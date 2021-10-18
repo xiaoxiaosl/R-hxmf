@@ -79,7 +79,7 @@ export default {
   },
   data() {
     return {
-      activeName: '1',
+      activeName: '0',
       styleHide: '',
       bannerImg: {
         imgUrl: require('@/static/product.png'),
@@ -88,12 +88,12 @@ export default {
       tabs: [
         {
           label: 'Phm华西玛法',
-          tabIndex: '1',
+          tabIndex: '0',
           describe: '专业修护线'
         },
         {
           label: '小桂花',
-          tabIndex: '2',
+          tabIndex: '1',
           describe: '日常护理线'
         }
       ],
@@ -124,7 +124,7 @@ export default {
       }
     },
   },
-  mounted() {
+  mounted() { 
     this.productData = productData
     this.setSwiperStyle();
   }

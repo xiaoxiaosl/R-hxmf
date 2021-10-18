@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const dev = 'http://192.168.0.114:8080/';
+const dev = 'http://192.168.4.129:8080/';
 const prop = 'http://192.168.0.114:8080/';
 const baseURL = process.env.NODE_ENV == 'production' ? prop : dev;
 

@@ -4,29 +4,38 @@
       <div class="contact">
         <h3>消费者服务:</h3>
         <div class="contact-info">
-          <a>防伪查询
+          <a
+            >防伪查询
             <div class="qrcode">
-              <img :src="service.fwcx" alt="防伪查询"><br/>请使用微信扫一扫
-            </div>
-          </a>|
-          <a>售后服务
-             <div class="qrcode sh" v-html="service.telphone"></div>  
+              <img
+                :src="serviceData.fwcx"
+                alt="防伪查询"
+              /><br />请使用微信扫一扫
+            </div> </a
+          >|
+          <a
+            >售后服务
+            <div class="qrcode sh" v-html="serviceData.telphone"></div>
           </a>
         </div>
         <h3>代理商服务:</h3>
         <div class="contact-info"><a href="">代理商申请</a></div>
         <h3>消费者服务:</h3>
         <div class="contact-info">
-          <a class="icon-weidian">官方微店
+          <a class="icon-weidian"
+            >官方微店
             <div class="qrcode">
-              <img :src="service.gfwd" alt="官方微店"><br/>请使用微信扫一扫
-            </div>
-          </a>|
+              <img
+                :src="serviceData.gfwd"
+                alt="官方微店"
+              /><br />请使用微信扫一扫
+            </div> </a
+          >|
           <a href="" class="icon-taobao">官网店铺</a>
         </div>
       </div>
       <div class="address">
-        <div class="erweima"><img :src="service.qrcode"></div>
+        <div class="erweima"><img :src="serviceData.qrcode" /></div>
         <p>官方微博：@PhM华西珐玛</p>
         <p>官方微信：phm-cd525</p>
         <p>客服电话：028-65232887</p>
@@ -39,17 +48,17 @@
 
 <script>
 export default {
- data() {
-   return {
-     service: {
-       fwcx: require('@/static/fwcx.png'),
-       telphone: '028-65232887(工作日9:00-18:00)',
-       gfwd: require('@/static/gfwd.png'),
-       qrcode: require('@/static/address-qr.png')
-     }
-   }
- }
-}
+  props: {
+    serviceData: {
+      default: {
+        fwcx: "./static/fwcx.png",
+        telphone: "028-65232887(工作日9:00-18:00)",
+        gfwd: "./static/gfwd.png",
+        qrcode: "./static/address-qr.png",
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -69,7 +78,7 @@ footer .panel-layout {
   display: flex;
   margin-left: -7px;
 }
-.contact-info a{
+.contact-info a {
   position: relative;
   color: #9b9b9b;
   display: inline-block;
@@ -79,7 +88,7 @@ footer .panel-layout {
   cursor: pointer;
 }
 .contact-info a:hover .qrcode,
-.contact-info a:hover .qrcode.sh{
+.contact-info a:hover .qrcode.sh {
   display: block;
 }
 .qrcode {
@@ -113,12 +122,14 @@ footer .panel-layout {
   left: 100px;
 }
 .icon-weidian {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAATlBMVEWrq6urq6sAAACrq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6vwdsqxAAAAGXRSTlOWVAD8iO8w38OmRCX0oNPRvK1/Yk08Ew8NaskKIAAAAGNJREFUCNdlz9cOwCAIBVBcuLuX//+jtRarSe8LHhMgAIjUIojdBz1m1KVWx2v8bBglvga+yBJTrZLlRmvVe3fO9i7zyYCeI2Ign9LnMnHqXzeJz1pyOAbwebtjKVskoX4HNd4bEQ6ujjg5vAAAAABJRU5ErkJggg==) left 3px no-repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAATlBMVEWrq6urq6sAAACrq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6vwdsqxAAAAGXRSTlOWVAD8iO8w38OmRCX0oNPRvK1/Yk08Ew8NaskKIAAAAGNJREFUCNdlz9cOwCAIBVBcuLuX//+jtRarSe8LHhMgAIjUIojdBz1m1KVWx2v8bBglvga+yBJTrZLlRmvVe3fO9i7zyYCeI2Ign9LnMnHqXzeJz1pyOAbwebtjKVskoX4HNd4bEQ6ujjg5vAAAAABJRU5ErkJggg==)
+    left 3px no-repeat;
   padding-left: 17px;
 }
 .icon-taobao {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAMAAADjyg5GAAAAb1BMVEUAAACrq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6t6ArW1AAAAJHRSTlMA+X6I1MqqFfHhs3flcmxLCuvCuJuSWFJRPzozKiEdqHZmXgxTlna1AAAAjElEQVQI113PRxLCMBBE0VaWJSecM6nvf0YERUGVZ/dm9RtS8HdC4q2/QeqcNv8a1HAGlRqXpcwS/XSrgNGIy7oLsLnaWuJurZXQYI9ebyWcUgoNSFNna4SLUSEkXg4dA/auVGhBUT0kMmzSSRhwgGlxoC7cnL5+mFNJMHlRPCeC9J8e36kgeGo+LXoBEroP/PsOYP4AAAAASUVORK5CYII=) left 3px no-repeat;
-    padding-left: 17px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAMAAADjyg5GAAAAb1BMVEUAAACrq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6t6ArW1AAAAJHRSTlMA+X6I1MqqFfHhs3flcmxLCuvCuJuSWFJRPzozKiEdqHZmXgxTlna1AAAAjElEQVQI113PRxLCMBBE0VaWJSecM6nvf0YERUGVZ/dm9RtS8HdC4q2/QeqcNv8a1HAGlRqXpcwS/XSrgNGIy7oLsLnaWuJurZXQYI9ebyWcUgoNSFNna4SLUSEkXg4dA/auVGhBUT0kMmzSSRhwgGlxoC7cnL5+mFNJMHlRPCeC9J8e36kgeGo+LXoBEroP/PsOYP4AAAAASUVORK5CYII=)
+    left 3px no-repeat;
+  padding-left: 17px;
 }
 .address {
   overflow: hidden;

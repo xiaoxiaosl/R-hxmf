@@ -11,7 +11,7 @@
       :name="item.tabIndex">
         <div class="contact-panel_title">{{item.label}}</div>
         <h4>{{item.describe}}</h4>
-        <div class="technology-detail" v-html="brandData.html"></div>
+        <div class="technology-detail" v-html="technologyHtml"></div>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -21,8 +21,9 @@
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { $httpNavbar } from "@/api/index.js";
 
-let brandData = [{
+let technologyData = [{
         html: `
           <div class="technology-txt" style="margin-top: -30px;">
             sthin™源自被国人世代食用上千年的天然桂花。<br> 是经创始人黄静教授，耗费10年时间萃取的一种具止痒、抗炎、修护功效的活性成分。
@@ -97,45 +98,36 @@ let brandData = [{
         `
       }]
 export default {
-  name: "home",
   components: {
     Header,
     Footer
   },
   data() {
     return {
-      activeName: '1',
-      bannerImg: {
-        imgUrl: require('@/static/banner8.png'),
-        label: '产品介绍'
-      },
-      tabs: [
-        {
-          label: '桂花Osthin™',
-          tabIndex: '1',
-          describe: '天然桂花活性提取成分Osthin™'
-        },
-        {
-          label: '纳米乳化',
-          tabIndex: '2',
-          describe: ''
-        },
-        {
-          label: '药学配方',
-          tabIndex: '3',
-          describe: '至简药学配方模式'
-        }
-      ],
-      brandData: ''
+      activeName: '0',
+      bannerImg: '',
+      tabs: '',
+      technologyHtml: ''
     }  
   },
   methods: {
-    handleClick(tab) {
-      this.brandData = brandData[tab.paneName - 1]
+    handleClick() {
+      this.getHttpData()
+    },
+    getHttpData() {
+      $httpNavbar({id: this.activeName}).then((response) => {
+        let resData = response.data;
+        this.bannerImg = resData.bannerImg;
+        this.tabs = resData.tabs;
+        // axios 使用
+        // this.technologyHtml = resData.technologyHtml[this.activeName];
+        this.technologyHtml = technologyData[this.activeName].html;
+        this.serviceData = resData.serviceData;
+      });
     },
   },
   mounted() {
-    this.brandData = brandData[0]
+    this.getHttpData()
   }
 };
 </script>

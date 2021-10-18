@@ -9,12 +9,13 @@
     <h6 class="brand-h6" v-html="brandData.describeSmall"></h6>
     <div class="panel-layout" v-html="brandData.html"></div>
   </div>
-  <Footer />
+  <Footer :service-data="serviceData"/>
 </template>
 
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { $httpNavbar } from "@/api/index.js";
 
 let brandData = [{
         bannerUrl: require('@/static/banner4.png'),
@@ -176,10 +177,13 @@ export default {
   },
   data() {
     return {
-      brandData: ''
+      brandData: '',
+      serviceData: ''
     }  
   },
   mounted() {
+    // 请求的时候使用
+    // this.getHttpData()
     let id = this.$route.query
     this.brandData = brandData[id.id]
   },
@@ -191,6 +195,14 @@ export default {
         this.$router.push(link);
       }
     },
+    getHttpData() {
+      let id = this.$route.query
+      $httpNavbar(id).then((response) => {
+        let resData = response.data;
+        // this.brandData = resData.brandData[id.id]
+        this.serviceData = resData.serviceData;
+      });
+    }
   },
   watch: {
     '$route' () {
