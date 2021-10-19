@@ -114,8 +114,8 @@ export default {
         }
       }
     },
-    handleClick(tab) {
-      if (tab.paneName == 2) {
+    handleClick() {
+      if (this.activeName == 1) {
         this.productData = productData2
         this.setSwiperStyle()
       } else {

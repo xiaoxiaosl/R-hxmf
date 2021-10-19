@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div class="picture">
-    <img src="@/static/news.jpg" alt="新闻资讯" />
+    <img :src="bannerImg" alt="新闻资讯" />
   </div>
   <div class="contact-panel news">
     <div class="contact-panel_title">新闻资讯</div>
@@ -39,7 +39,7 @@
 <script>
 import Header from "@/components/header.vue";
 import Footer from "@/components/footer.vue";
-import { $httpNavbar } from "@/api/index.js";
+import { $httpGet } from "@/api/index.js";
 const newData = [
   {
     id: 0,
@@ -123,6 +123,7 @@ export default {
   },
   data() {
     return {
+      bannerImg: require('@/static/news.jpg'),
       newData: "",
       currentPage: 1,
       pageSize: 10,
@@ -137,14 +138,14 @@ export default {
       });
     },
     handleCurrentChange(val) {
-        $httpNavbar({page: val}).then((response) => {
+        $httpGet({page: val}).then((response) => {
           let resData = response.data;
           this.newData = resData.newData2
           this.totalNum = resData.total
       })
     }
   },
-  mounted() {
+  created() {
     this.handleCurrentChange()
   }
 }

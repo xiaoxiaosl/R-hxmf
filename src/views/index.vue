@@ -30,7 +30,7 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Product from "@/components/productList";
-import { $httpNavbar } from "@/api/index.js";
+import { $httpGet } from "@/api/index.js";
 
 export default {
   name: "home",
@@ -47,7 +47,7 @@ export default {
       productTxt: "",
       bannerItem: [
         {
-          imgUrl: "./static/banner1.jpg",
+          imgUrl: "",
           path: "/contactUs",
         }
       ],
@@ -68,7 +68,7 @@ export default {
       }
     },
     getHttpData() {
-      $httpNavbar().then((response) => {
+      $httpGet().then((response) => {
         let resData = response.data;
         this.bannerItem = resData.bannerItem;
         this.productData = resData.productData;
@@ -79,7 +79,6 @@ export default {
     },
   },
   mounted() {
-    this.getHttpData();
     this.screenWidth = window.innerWidth;
     this.setSize();
     window.onresize = () => {
@@ -87,6 +86,9 @@ export default {
       this.setSize();
     };
   },
+  created() {
+    this.getHttpData();
+  }
 };
 </script>
 

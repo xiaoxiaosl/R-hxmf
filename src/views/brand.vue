@@ -15,7 +15,7 @@
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { $httpNavbar } from "@/api/index.js";
+import { $httpGet } from "@/api/index.js";
 
 let brandData = [{
         bannerUrl: require('@/static/banner4.png'),
@@ -197,12 +197,15 @@ export default {
     },
     getHttpData() {
       let id = this.$route.query
-      $httpNavbar(id).then((response) => {
+      $httpGet(id).then((response) => {
         let resData = response.data;
         // this.brandData = resData.brandData[id.id]
         this.serviceData = resData.serviceData;
       });
     }
+  },
+  created() {
+    this.getHttpData();
   },
   watch: {
     '$route' () {

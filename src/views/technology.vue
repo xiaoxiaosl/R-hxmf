@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="picture">
+  <div class="picture" v-cloak>
     <img :src="bannerImg.imgUrl" alt="bannerImg.label">
   </div>
   <div class="contact-panel">
@@ -21,7 +21,7 @@
 <script>
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { $httpNavbar } from "@/api/index.js";
+import { $httpGet } from "@/api/index.js";
 
 let technologyData = [{
         html: `
@@ -115,7 +115,7 @@ export default {
       this.getHttpData()
     },
     getHttpData() {
-      $httpNavbar({id: this.activeName}).then((response) => {
+      $httpGet({id: this.activeName}).then((response) => {
         let resData = response.data;
         this.bannerImg = resData.bannerImg;
         this.tabs = resData.tabs;
@@ -126,7 +126,7 @@ export default {
       });
     },
   },
-  mounted() {
+  created() {
     this.getHttpData()
   }
 };
